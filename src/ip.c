@@ -46,7 +46,8 @@ void ip_in(buf_t *buf, uint8_t *src_mac)
 
     // if protocol is unknown, then unreachable
     if (ip_head->protocol == NET_PROTOCOL_IP || ip_head->protocol == NET_PROTOCOL_ARP ||
-        ip_head->protocol == NET_PROTOCOL_UDP || ip_head->protocol == NET_PROTOCOL_ICMP)
+        ip_head->protocol == NET_PROTOCOL_UDP || ip_head->protocol == NET_PROTOCOL_ICMP ||
+        ip_head->protocol == NET_PROTOCOL_TCP)
     {
         // remove ip header
         buf_remove_header(buf, sizeof(ip_hdr_t));
